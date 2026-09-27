@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "iLogBC - Specialist Logistics & Blockchain Consulting Platform",
   "private": true,
+  "type": "module",
   "scripts": {
+    "build": "npm --prefix client run build",
     "dev:client": "npm --prefix client run dev",
     "dev:server": "npm --prefix server run dev",
     "build:client": "npm --prefix client run build",
     "install:all": "npm --prefix client install && npm --prefix server install"
+  },
+  "dependencies": {
+    "mongoose": "^8.24.4"
   }
 }
