@@ -38,10 +38,10 @@ npm run build:client
 
 ## Live Website
 
-The project is set up for Vercel. Add the real Vercel URL below after deployment:
+The project is deployed on Vercel:
 
 ```text
-https://your-project.vercel.app
+https://ilogbc-ashy.vercel.app/
 ```
 
 The `vercel.json` file builds the client and keeps page links working after refresh. No backend or database setup is required for the UI assessment.
