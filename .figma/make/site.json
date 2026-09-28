@@ -1,0 +1,11 @@
+{
+  "title": "iLogBC",
+  "description": "iLogBC offers comprehensive logistics and consulting services with industry insights and tailored solutions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
