@@ -55,6 +55,17 @@
   animation: fadeUp 0.5s ease forwards;
 }
 
+@media (hover: none), (pointer: coarse) {
+  .service-panel {
+    height: calc(100% - 2rem);
+  }
+
+  .service-description {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 html {
   scrollbar-width: none;
 }

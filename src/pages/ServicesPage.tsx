@@ -1,9 +1,35 @@
-import { useState } from 'react'
-import { services } from '../data/siteData'
-import { GoldDivider, Label } from '../components/ContentBits'
+import { assets } from "../assets/assets"
 
-export default function ServicesPage() {
-  const [active, setActive] = useState(0)
-  const service = services[active]
-  return <main className="pt-16"><section className="border-b border-[#C9A84C]/10 px-8 py-28 md:px-14"><div className="max-w-4xl"><Label>Our Services</Label><h1 className="mt-6 mb-5 text-5xl leading-tight text-[#F0E8D5] md:text-[5rem]" style={{ fontFamily: "'Playfair Display', serif" }}>What We<br /><em className="text-[#C9A84C]">Deliver</em></h1><GoldDivider /><p className="mt-6 max-w-xl text-sm leading-relaxed text-[#8A8070]">Six integrated service lines spanning the full logistics and consulting value chain.</p></div></section><section className="border-b border-[#C9A84C]/10"><div className="mx-auto grid max-w-7xl lg:grid-cols-5"><div className="border-r border-[#C9A84C]/10 lg:col-span-2">{services.map((item, index) => <button key={item.id} onClick={() => setActive(index)} className={`flex w-full items-center gap-7 border-b border-[#C9A84C]/10 px-9 py-7 text-left ${active === index ? 'bg-[#11111E]' : 'hover:bg-[#0D0D1A]'}`}><span className="text-[10px] font-mono text-[#C9A84C]">{item.number}</span><span className="text-[1.1rem] text-[#F0E8D5]" style={{ fontFamily: "'Playfair Display', serif" }}>{item.name}</span>{active === index && <span className="ml-auto text-[#C9A84C]">→</span>}</button>)}</div><div className="px-10 py-14 md:px-14 lg:col-span-3"><div className="mb-2 text-[9px] font-mono tracking-[0.4em] text-[#C9A84C] uppercase">Service {service.number}</div><h2 className="mb-2 text-3xl leading-tight text-[#F0E8D5] md:text-[2.4rem]" style={{ fontFamily: "'Playfair Display', serif" }}>{service.name}</h2><div className="mb-5 text-sm italic text-[#C9A84C]/80">{service.short}</div><GoldDivider /><p className="mt-6 mb-8 text-sm leading-relaxed text-[#8A8070]">{service.description}</p><div className="mb-4 text-[9px] font-mono tracking-[0.3em] text-[#C9A84C]/60 uppercase">Capabilities</div><div className="grid gap-3 sm:grid-cols-2">{service.capabilities.map((capability) => <div key={capability} className="flex items-center gap-3 text-[12px] text-[#8A8070]"><span className="h-4 w-px bg-[#C9A84C]/40" />{capability}</div>)}</div><button className="mt-10 border border-[#C9A84C]/40 px-6 py-3 text-[9px] font-mono tracking-[0.22em] text-[#C9A84C] uppercase hover:bg-[#C9A84C]/10">Request a Briefing</button></div></div></section><section className="bg-[#0D0D1A] px-8 py-24 md:px-14"><div className="mx-auto max-w-6xl"><div className="mb-16 text-center"><Label>How We Work</Label><h2 className="mt-4 text-[2.4rem] text-[#F0E8D5]" style={{ fontFamily: "'Playfair Display', serif" }}>Our Engagement Process</h2></div><div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">{[['01', 'Diagnostic', 'Deep-dive assessment of current state, pain points, and strategic objectives.'], ['02', 'Design', 'Bespoke solution architecture aligned to your operational reality.'], ['03', 'Deploy', 'Rapid, disciplined execution with embedded consultants.'], ['04', 'Sustain', 'Capability transfer, measurement, and ongoing advisory.']].map(([step, title, body]) => <div key={step}><div className="mb-4 text-5xl text-[#C9A84C]/20" style={{ fontFamily: "'Playfair Display', serif" }}>{step}</div><h3 className="mb-3 text-[1.1rem] text-[#F0E8D5]" style={{ fontFamily: "'Playfair Display', serif" }}>{title}</h3><p className="text-[12px] leading-relaxed text-[#8A8070]">{body}</p></div>)}</div></div></section></main>
+import MarketEntry from "../components/MarketEntry"
+import ServiceList from "../components/ServiceList"
+
+import type { Page } from "../data/siteData"
+import { PageIntro as Intro } from "../components/Text"
+
+export default function ServicesPage({ navigate }: { navigate: (page: Page) => void }) {
+  return (
+    <main className="pt-16">
+      <section className="border-b border-[#C9A84C]/10 px-4 py-16 sm:px-6 md:px-14 md:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1fr_0.85fr] lg:gap-12">
+          <div>
+            <Intro
+              label="Our Expertise"
+              title="Enter and grow"
+              highlight="in India"
+              text="Specialist advisory for shipping, logistics, infrastructure, manufacturing and supply-chain businesses navigating complex commercial decisions, investments and growth opportunities in India."
+            />
+          </div>
+          <div className="flex justify-center lg:justify-end">
+            <img
+              src={assets.servicesHero}
+              alt="iLogBC services"
+              className="w-full max-w-[420px] object-contain sm:max-w-[520px]"
+            />
+          </div>
+        </div>
+      </section>
+      <MarketEntry navigate={navigate} />
+      <ServiceList />
+    </main>
+  )
 }
